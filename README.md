@@ -1,4 +1,4 @@
-# Contact-information-web-application
+# Contact-management-web-application
 This web application is to store all contact information for one organization
 
 
