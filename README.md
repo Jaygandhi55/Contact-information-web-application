@@ -18,4 +18,4 @@ Technolgies used:
 4. Bootstrap
 
 
-src/app/main-module
+Root module:  src/app/app.module.ts
