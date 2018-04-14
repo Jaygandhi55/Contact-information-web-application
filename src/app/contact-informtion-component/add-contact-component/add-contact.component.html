@@ -1,0 +1,78 @@
+<div class="main-container">
+    <div class="header"><h3 class="padding-custom">{{heading}} contact</h3></div>
+
+    <div class="while-space row">
+        <div class="col-lg-3 col-md-4 col-xs-12 no-gutter">
+            
+                <div class="Menu-panel border-custom"><a routerLink="/addcontact" routerLinkActive="active" (click)="resetAll(FirstName, LastName, Email, Phone)">Add new contact</a></div>
+                <div class="Menu-panel border-custom"><a routerLink="/editcontact" routerLinkActive="active">List/Edit contacts</a></div>
+                <div class="Menu-panel"><a routerLink="/deletecontact" routerLinkActive="active">Delete contact</a></div>   
+            
+        </div>
+        <div class="col-lg-9 col-md-8 col-xs-12 gutter form-group">
+                <p>Add your contact details here, all fields are mandatory.</p>
+                <div class="alert alert-danger" *ngIf="DuplicateEntry">
+                    <strong>Error: </strong> Email or Phone number is aleredy present.
+                </div>
+                <div class="alert alert-success" *ngIf="contactAdded">
+                    <strong>Success!</strong> Contact has been added successfully.
+                </div>
+
+                <div class="gutter">
+                    <label class="col-lg-3 col-md-4 col-xs-12">First name:</label>
+                    <div class="col-lg-9 col-md-8 col-xs-12">
+                          <input #FirstName="ngModel" pattern="^[a-zA-Z]+" [(ngModel)]="firstName" type="text" class="form-control" required placeholder="Enter your first name"/>
+                          <span class="validation-error" *ngIf="FirstName?.errors?.pattern">This field only consider characters.</span>
+                    </div>
+                </div>
+
+                <div class="gutter">
+                    <label class="col-lg-3 col-md-4 col-xs-12">Last name:</label>
+                    <div class="col-lg-9 col-md-8 col-xs-12">
+                          <input #LastName="ngModel" pattern="^[a-zA-Z]+" [(ngModel)]="lastName" type="text" class="form-control" required placeholder="Enter your last name"/>
+                          <span class="validation-error" *ngIf="LastName?.errors?.pattern">This field only consider characters.</span>
+                    </div>
+                </div>
+
+
+
+                <div class="gutter">
+                    <label class="col-lg-3 col-md-4 col-xs-12">Email:</label>
+                    <div class="col-lg-9 col-md-8 col-xs-12">
+                          <input #Email="ngModel" pattern="{{emailPattern}}" maxlength="50" [(ngModel)]="emailId" type="text" class="form-control" required placeholder="Enter your Email address"/>
+                          <span class="validation-error" *ngIf="Email?.errors?.pattern">Please enter valid email Id.</span>
+                    </div>
+                </div>
+
+
+                <div class="gutter">
+                      <label class="col-lg-3 col-md-4 col-xs-12">Phone no:</label>
+                      <div class="col-lg-9 col-md-8 col-xs-12">
+                            <input #Phone="ngModel" maxlength="10" pattern="^[0-9]+" [(ngModel)]="phoneNo" type="text" class="form-control" required placeholder="Enter your phone number"/>
+                            <span class="validation-error" *ngIf="Phone?.errors?.pattern">This field only consider numbers.</span>
+                      </div>
+                </div>
+
+                <div class="gutter">
+                      <label class="col-lg-3 col-md-4 col-xs-12">Phone no:</label>
+                      <div class="col-lg-9 col-md-8 col-xs-12">
+                            <label class="container">Active
+                                          <input [(ngModel)]="status" type="radio" name="radio" required value="true">
+                                          <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Inactive
+                                          <input [(ngModel)]="status" type="radio" name="radio" required value="false">
+                                          <span class="checkmark"></span>
+                            </label>
+                      </div>
+                </div>
+                
+              
+                <div class="float-right">
+                      <button class="btn-default" (click)="resetAll(FirstName, LastName, Email, Phone)">Cancel</button>
+
+                      <button class="btn-danger" [disabled]="FirstName.invalid || LastName.invalid || Email.invalid || Phone.invalid || status === '' " (click)="saveDetails()">Submit</button>
+                </div>
+        </div>
+    </div>
+</div>

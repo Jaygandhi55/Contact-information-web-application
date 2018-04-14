@@ -1,0 +1,69 @@
+<div class="main-container">
+    <div class="header"><h3 class="padding-custom">Delete contacts</h3></div>
+
+    <div class="while-space row">
+        <div class="col-lg-3 col-md-4 col-xs-12 no-gutter">
+            
+                <div class="Menu-panel border-custom"><a routerLink="/addcontact" routerLinkActive="active">Add new contact</a></div>
+                <div class="Menu-panel border-custom"><a routerLink="/editcontact" routerLinkActive="active">List/Edit contacts</a></div>
+                <div class="Menu-panel"><a routerLink="/deletecontact" routerLinkActive="active">Delete contact</a></div>   
+            
+        </div>
+        <div class="col-lg-9 col-md-8 col-xs-12 gutter">
+                <div class="alert alert-warning" *ngIf="zeroContact">
+                    <strong>warning: </strong> Currently no contacts are available.
+                </div>
+    <table class="table" *ngIf="!zeroContact">
+
+    <!--Table head-->
+    <thead class="mdb-color darken-3">
+        <tr class="text-white">
+            <th>#</th>
+            <th>F- Name</th>
+            <th>L- Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+        <tr *ngFor="let element of list; let i = index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{element.firstName}}</td>
+            <td>{{element.lastName}}</td>
+            <td>{{element.email}}</td>
+            <td>{{element.mobile}}</td>
+            <td>{{element.status === 'true' ? 'Active' : 'Inactive'}}</td>
+            <td><button class="btn-link" data-toggle="modal" data-target="#myModal" (click)="deleteDetails(element.email)">Delete</button></td>
+        </tr>
+      
+    </tbody>
+    <!--Table body-->
+
+</table>
+<!--Table-->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Are you sure want to delete details?</h4>
+        </div>
+        <div class="modal-body">
+          <p>Data will be deleted permanently.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteAnyway()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>

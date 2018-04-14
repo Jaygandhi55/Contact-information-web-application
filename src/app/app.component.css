@@ -1,0 +1,7 @@
+.container{
+  width: 75%;
+  align-content: center;
+}
+.navbar-brand, .navbar-brand:hover{
+  color: #3e505d !important;
+}
