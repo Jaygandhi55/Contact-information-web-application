@@ -8,7 +8,7 @@ This web application is to store all contact information for one organization, i
 You can go to each module without reloading the page.
 
 
-# Actual live Demo : 
+# Live Demo : 
 https://angular-s3wgwv.stackblitz.io/home
 
 
@@ -23,6 +23,9 @@ https://stackblitz.com/edit/angular-s3wgwv?file=app
 2. HTML
 3. CSS
 4. Bootstrap
+
+# Unit testing
+- Jasmine Unit testing framework(check spec files in each component)
 
 
 # Validations used for form submit
